@@ -48,7 +48,6 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
                         <?php
                         for ($jour = 1; $jour <= 5; $jour++) //génération des cellules sous les jours
                         {
-                            $case = $heure . $jour; //Crée un numéro pour chaque cellules
                             if (!empty($info_resa)) {
                                 foreach ($info_resa as $resa => $Hresa) //sépare les réservations
                                 {
@@ -60,7 +59,9 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
                                     $J = explode("-", $JH[0]); //explose la date
                                     $jour_resa = date("N", mktime(0, 0, 0, $J[1], $J[2], $J[0])); //récupère le numéro du jour      
 
-                                    $case_resa = $heure_resa . $jour_resa; //crée un numéro de réservation                                         
+                                    $case_resa = $heure_resa . $jour_resa; //crée un numéro de réservation                     
+                                    $case = $heure . $jour; //Crée un numéro pour chaque cellules
+
 
                                     $titre = $Hresa["titre"];
                                     $login = $Hresa["login"];
