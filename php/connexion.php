@@ -36,6 +36,8 @@ require "./include/config.php";
                     $recupUser->execute([$login, $password]);
 
                     if ($recupUser->rowCount() > 0) {
+                        $_SESSION['login'] = $login;
+                        $_SESSION['password'] = $password;
                         $_SESSION['users'] = $recupUser->fetchAll(PDO::FETCH_ASSOC);
                         header("Location: ../index.php");
                     }

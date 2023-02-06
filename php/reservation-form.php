@@ -19,6 +19,7 @@ if (!isset($_SESSION['login'])) {
         $requete_creneau->execute(array($debut));
         $requete_creneau = $requete_creneau->fetch(PDO::FETCH_ASSOC);
 
+        var_dump($requete_creneau);
         //check si le jour n'est pas week-end
         $semaine = explode("-", $_POST["debut_date"]);
         $jour = date("N", mktime(0, 0, 0, $semaine[1], $semaine[2], $semaine[0]));
@@ -65,11 +66,16 @@ if (!isset($_SESSION['login'])) {
 
 <head>
     <meta charset="UTF-8">
+    <?php include_once './include/head-include.php' ?>
     <title>Réserver une salle</title>
 </head>
 
 <body>
-
+    <header>
+        <nav>
+            <?php include './include/header-include.php'; ?>
+        </nav>
+    </header>
     <main>
         <h1>Réserver une compétition:</h1>
         <form action="reservation-form.php" method="POST" class="form_pir">

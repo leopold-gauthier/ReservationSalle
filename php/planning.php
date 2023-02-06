@@ -1,6 +1,10 @@
 <?php
 session_start();
 require("./include/config.php");
+//sélectionne toutes les réservations de la semaine en cour, en allant chercher le login de l'user qui fait la résa. 
+$requete_resa = $bdd->prepare("SELECT * FROM utilisateurs INNER JOIN reservations ON utilisateurs.id = reservations.id_utilisateur WHERE week(debut) = week(curdate())");
+$requete_resa->execute();
+$info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +48,7 @@ require("./include/config.php");
                         <?php
                         for ($jour = 1; $jour <= 5; $jour++) //génération des cellules sous les jours
                         {
+                            $case = $heure . $jour; //Crée un numéro pour chaque cellules
                             if (!empty($info_resa)) {
                                 foreach ($info_resa as $resa => $Hresa) //sépare les réservations
                                 {
@@ -61,7 +66,7 @@ require("./include/config.php");
                                     $login = $Hresa["login"];
                                     $id = $Hresa["id"];
 
-                                    $case = $heure . $jour; //Crée un numéro pour chaque cellules
+
 
                                     if ($case == $case_resa) {
                         ?>
@@ -99,3 +104,9 @@ require("./include/config.php");
 </body>
 
 </html>
+
+<STYLE>
+    body {
+        text-align: center;
+    }
+</STYLE>

@@ -35,13 +35,14 @@ if (isset($_SESSION["login"])) {
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/style.css" />
-    <title>Réservation</title>
+    <?php include_once './include/head-include.php' ?>
+    <title>Réserver</title>
 </head>
 
 <body>
-    <?php include 'include/header.php'; ?>
-
+    <header>
+        <?php include_once './include/header-include.php'; ?>
+    </header>
     <main>
         <section id="reservation">
             <h1>Réserver par <u><?php echo $login; ?></u></h1>
