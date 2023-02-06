@@ -1,7 +1,8 @@
 <?php
 session_start();
-if (!isset($_SESSION["login"])) {
-    header("Location:index.php");
+include_once "./include/config.php";
+if (!isset($_SESSION['login'])) {
+    header("Location: ./connexion.php");
 } else {
     if (isset($_POST["validresa"]) && !empty($_POST["titre"]) && !empty($_POST["description"]) && !empty($_POST["debut_date"]) && !empty($_POST["debut_heure"]) && !empty($_POST["fin_date"]) && !empty($_POST["fin_heure"])) {
         $debut = $_POST["debut_date"] . " " . $_POST["debut_heure"];
@@ -10,19 +11,19 @@ if (!isset($_SESSION["login"])) {
         $description = $_POST["description"];
         $debut_str = strtotime($debut);
         $fin_str = strtotime($fin);
-        $id = $_SESSION["id"];
+        $id = $_SESSION['users'][0]["id"];
 
         //vérifie que l'heure de début choisie n'est pas déjà enregistré
-        $connexionbd = mysqli_connect("localhost", "root", "", "reservationsalles");
-        $requete_creneau = "SELECT * FROM reservations WHERE debut='$debut'";
-        $query_creneau = mysqli_query($connexionbd, $requete_creneau);
-        $info_creneau = mysqli_fetch_all($query_creneau, MYSQLI_ASSOC);
+        // PDO
+        $requete_creneau = $bdd->prepare('SELECT * FROM reservations WHERE debut= ?');
+        $requete_creneau->execute(array($debut));
+        $requete_creneau = $requete_creneau->fetch(PDO::FETCH_ASSOC);
 
         //check si le jour n'est pas week-end
         $semaine = explode("-", $_POST["debut_date"]);
         $jour = date("N", mktime(0, 0, 0, $semaine[1], $semaine[2], $semaine[0]));
 
-        if (empty($info_creneau)) {
+        if (empty($requete_creneau)) {
             if ($debut_str < time()) //check date saisie pour début n'est pas déjà passée                                 
             //time -2 heures !!!!!                            
             {
@@ -40,8 +41,8 @@ if (!isset($_SESSION["login"])) {
                     {
                         if ($jour <= 5) //vérifie que le jour n'est pas week-end
                         {
-                            $ajout = "INSERT INTO reservations (titre, description, debut, fin, id_utilisateurs) VALUES ('$titre', '$description', '$debut', '$fin', '$id')";
-                            $query_ajout = mysqli_query($connexionbd, $ajout);
+                            $ajout = $bdd->prepare("INSERT INTO reservations (id_utilisateur,titre, description, debut, fin) VALUES (?, ?, ?, ?, ?)");
+                            $ajout->execute([$id, $titre, $description, $debut, $fin]);
                             $msg_valid = "réservation prise en compte";
                         } else {
                             $msg_error = "Pas de réservation le week-end";
