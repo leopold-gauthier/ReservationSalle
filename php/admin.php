@@ -35,7 +35,7 @@ if ($_SESSION['login'] != 'admin') {
 
     <main>
         <?php
-        $request = $bdd->query('SELECT id,login,prenom,nom FROM utilisateurs');
+        $request = $bdd->query('SELECT id,login FROM utilisateurs');
         $result = $request->fetchAll(PDO::FETCH_ASSOC);
         ?>
         <table>
@@ -53,8 +53,6 @@ if ($_SESSION['login'] != 'admin') {
                     <tr>
                         <td><?= $result[$i]['id'] ?></td>
                         <td><?= $result[$i]['login'] ?></td>
-                        <td><?= $result[$i]['prenom'] ?></td>
-                        <td><?= $result[$i]['nom'] ?></td>
                     </tr>
                 <?php endfor; ?>
             </tbody>

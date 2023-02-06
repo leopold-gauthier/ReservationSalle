@@ -37,10 +37,6 @@ require "./include/config.php";
 
             <label for="login">Login</label>
             <input type="text" name="login" id="login" value="<?= $_SESSION['users'][0]['login']  ?>" required />
-            <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" id="prenom" value="<?= $_SESSION['users'][0]['prenom']  ?>" required />
-            <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom" value="<?= $_SESSION['users'][0]['nom']  ?>" />
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required />
             <label for="cpassword">Confirmation</label>
@@ -48,16 +44,14 @@ require "./include/config.php";
             <?php
             if (isset($_POST['envoi'])) {
                 $login = htmlspecialchars($_POST['login']);
-                $prenom = htmlspecialchars($_POST['prenom']);
-                $nom = htmlspecialchars($_POST['nom']);
-                $password = md5($_POST['password']); // md5'() pour crypet le mdp
+                $password = $_POST['password']; // md5'() pour crypet le mdp
                 $id = $_SESSION['users'][0]['id'];
 
                 $recupUser = $bdd->prepare("SELECT * FROM utilisateurs WHERE login = ? AND id != ?");
                 $recupUser->execute([$login, $id]);
                 $insertUser = $bdd->prepare("UPDATE utilisateurs SET login = ? , prenom = ? , nom = ? , password=  ? WHERE id = ?");
 
-                if (empty($login) || empty($prenom) || empty($nom) || empty($password) || empty($_POST['cpassword'])) {
+                if (empty($login) || empty($password) || empty($_POST['cpassword'])) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVeuillez complétez tous les champs.</p>";
                 } elseif (!preg_match("#^[a-z0-9]+$#", $login)) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspLe login doit être renseigné en lettres minuscules sans accents, sans caractères spéciaux.</p>";
@@ -68,10 +62,8 @@ require "./include/config.php";
                 } elseif ($recupUser->rowCount() > 0) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspCe login est déjà utilisé.</p>";
                 } else {
-                    $insertUser->execute([$login, $prenom, $nom, $password, $id]);
+                    $insertUser->execute([$login, $password, $id]);
                     $_SESSION['users'][0]['login'] = $login;
-                    $_SESSION['users'][0]['prenom'] = $prenom;
-                    $_SESSION['users'][0]['nom'] = $nom;
                     header("Location: profil.php");
                 }
             }
@@ -80,7 +72,6 @@ require "./include/config.php";
         </form>
 
     </main>
-    <footer><a href="https://github.com/Dylan-olivro"><i class="fa-brands fa-github"></i></a></footer>
 </body>
 
 </html>

@@ -40,7 +40,7 @@ require "./include/config.php";
             <?php
             if (isset($_POST['envoi'])) {
                 $login = htmlspecialchars($_POST['login']);
-                $password = md5($_POST['password']); // md5'() pour crypet le mdp
+                $password = $_POST['password']; // md5'() pour crypet le mdp
 
                 if (!empty($login) && !empty($password)) {
                     $recupUser = $bdd->prepare("SELECT * FROM utilisateurs WHERE login = ? AND password = ?");
@@ -51,19 +51,18 @@ require "./include/config.php";
                         $_SESSION['password'] = $password;
                         $_SESSION['users'] = $recupUser->fetchAll(PDO::FETCH_ASSOC);
                         header("Location: ../index.php");
-                    } else {
-                        echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVotre login ou mot de passe incorect.</p>";
                     }
                 } else {
-                    echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVeuillez compléter tous les champs.</p>";
+                    echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVotre login ou mot de passe incorect.</p>";
                 }
+            } else {
+                echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVeuillez compléter tous les champs.</p>";
             }
+
             ?>
             <input type="submit" name="envoi" value="Log In" id="button">
         </form>
     </main>
-
-    <footer><a href="https://github.com/Dylan-olivro"><i class="fa-brands fa-github"></i></a></footer>
 
 </body>
 

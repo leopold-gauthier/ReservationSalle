@@ -37,10 +37,6 @@ require("./include/config.php");
 
             <label for="login">Login</label>
             <input type="text" id="login" name="login" placeholder="Login" required autofocus autocomplete="off">
-            <label for="prenom">Prénon</label>
-            <input type="text" id="prenom" name="prenom" placeholder="Prenom" required autocomplete="off">
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" placeholder="Nom" required autocomplete="off">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Password" required>
             <label for="cpassword">Confirmation</label>
@@ -48,24 +44,22 @@ require("./include/config.php");
             <?php
             if (isset($_POST['envoi'])) {
                 $login = htmlspecialchars($_POST['login']);
-                $prenom = htmlspecialchars($_POST['prenom']);
-                $nom = htmlspecialchars($_POST['nom']);
-                $password = md5($_POST['password']); // md5'() pour crypet le mdp
+                $password = $_POST['password']; // md5'() pour crypet le mdp
 
                 $recupUser = $bdd->prepare("SELECT * FROM utilisateurs WHERE login = ?");
                 $recupUser->execute([$login]);
 
-                if (empty($login) || empty($prenom) || empty($nom) || empty($password) || empty($_POST['cpassword'])) {
+                if (empty($login) || empty($password) || empty($_POST['cpassword'])) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVeuillez complétez tous les champs.</p>";
                 } elseif (!preg_match("#^[a-z0-9]+$#", $login)) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspLe login doit être renseigné en lettres minuscules sans accents, sans caractères spéciaux.</p>";
-                } elseif ($password != md5($_POST['cpassword'])) {
+                } elseif ($password != $_POST['cpassword']) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspLes deux mots de passe sont differents.</p>";
                 } elseif ($recupUser->rowCount() > 0) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspCe login est déjà utilisé.</p>";
                 } else {
-                    $insertUser = $bdd->prepare("INSERT INTO utilisateurs(login, prenom, nom, password)VALUES(?,?,?,?)");
-                    $insertUser->execute([$login, $prenom, $nom, $password]);
+                    $insertUser = $bdd->prepare("INSERT INTO utilisateurs(login, password)VALUES(?,?)");
+                    $insertUser->execute([$login, $password]);
                     header("Location: connexion.php");
                 }
             }
@@ -74,7 +68,6 @@ require("./include/config.php");
         </form>
     </main>
 
-    <footer><a href="https://github.com/Dylan-olivro"><i class="fa-brands fa-github"></i></a></footer>
 </body>
 
 </html>
