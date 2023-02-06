@@ -2,6 +2,8 @@
 if (isset($_SESSION['login'])) {
     echo '<a href="../index.php">Accueil</a>';
     echo '<a href="./profil.php">Profil</a>';
+    echo '<a href="./php/planning.php">Planning</a>';
+    echo '<a href="./php/reservation-form.php">Réservation</a>';
     if ($_SESSION['login'] == 'admin') {
         echo '<a href="./admin.php">Admin</a>';
     }
@@ -10,4 +12,5 @@ if (isset($_SESSION['login'])) {
     echo '<a href="../index.php">Accueil</a>';
     echo '<a href="./connexion.php">Se connecter</a>';
     echo "<a href='./inscription.php'>S'inscrire</a>";
+    echo '<a href="./php/planning.php">Planning</a>';
 }
