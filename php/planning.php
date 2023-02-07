@@ -23,8 +23,10 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
 
     <div id="backgroundplanning">
         <main>
-            <h1>Planning <?php echo $jour_semaine = date('Y', time()); ?></h1>
-            <h2>Semaine <?php echo $jour_semaine = date('W', time()); ?></h2>
+            <h1 class="bk_font">
+                Planning <?php echo $jour_semaine = date('Y', time()); ?>
+            </h1>
+            <h2 class="bk_font">Semaine <?php echo $jour_semaine = date('W', time()); ?></h2>
             <table>
                 <thead>
                     <tr>
@@ -65,24 +67,27 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
 
                                         $titre = $Hresa["titre"];
                                         $login = $Hresa["login"];
+                                        $desc = $Hresa["description"];
                                         $id = $Hresa["id"];
 
 
 
                                         if ($case == $case_resa) {
                             ?>
-                                            <td class="resa"><a href="reservation.php?evenement=<?php echo $id; ?>">
-                                                    <p><?php echo $titre; ?></p>
-                                                    <p><?php echo $login; ?></p>
+                                            <td class="td_reserved">
+                                                <a href="reservation.php?evenement=<?php echo $id; ?>">
+                                                    <?php echo $titre; ?><br>
+                                                    <?php echo $desc; ?><br>
                                                     <?php
                                                     if (isset($_SESSION['login']) && $_SESSION['login'] == 'admin') { ?>
                                                         <a href="./reservation_delete.php?id=<?php echo $id; ?>"><i class="fa-solid fa-xmark"></i></a>
                                                     <?php
                                                     } else {
-                                                        echo "";
+                                                        echo "View Match";
                                                     }
                                                     ?>
-                                                </a></td>
+                                                </a>
+                                            </td>
                                         <?php
                                             break;
                                         } else //si pas de correspondance set $case à null pour éviter trop d'affchage

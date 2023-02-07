@@ -66,7 +66,7 @@ if (!isset($_SESSION['login'])) {
 <head>
     <meta charset="UTF-8">
     <?php include_once './include/head-include.php' ?>
-    <title>Réserver une salle</title>
+    <title>Réserver un match</title>
 </head>
 
 <body>
@@ -77,9 +77,9 @@ if (!isset($_SESSION['login'])) {
     </header>
     <div id="backgroundreservation-form">
         <main>
-            <h1>Réserver une compétition</h1>
+            <h1 class="bk_font">Prepare your match !</h1>
             <form action="reservation-form.php" method="POST" class="form_pir">
-                <label for="titre">Match</label>
+                <label class="bk_font2" for="titre">Match</label>
                 <select id="titre" name="titre" required>
                     <option value="1 vs 1">1 vs 1</option>
                     <option value="2 vs 2">2 vs 2</option>
@@ -87,9 +87,9 @@ if (!isset($_SESSION['login'])) {
                     <option value="4 vs 4">4 vs 4</option>
                     <option value="5 vs 5">5 vs 5</option>
                 </select>
-                <label for="equipe">Equipe</label>
+                <label class="bk_font2" for="equipe">Equipe</label>
                 <input type="text" id="description" name="description" required>
-                <label for="debut">Date et heure de début</label>
+                <label class="bk_font2" for="debut">Date Début</label>
 
                 <!-- Date de Debut -->
                 <!-- ///////////// -->
@@ -162,17 +162,17 @@ if (!isset($_SESSION['login'])) {
                 <!-- Date et Heure de fin -->
                 <!-- //////////////////// -->
 
-                <label for="fin">Date et heure de fin</label>
+                <label class="bk_font2">Date Fin</label>
                 <?php
                 if (isset($_GET["date_debut"])) {
                 ?>
                     <input type="date" id="fin" name="fin_date" min="<?php echo date('Y-m-d') ?>" value="<?php echo $date_select; ?>" required>
-                    <small>Créneau d'une heure !</small>
+                    <label class="bk_font2">Créneau une heure max !</label>
                 <?php
                 } else {
                 ?>
                     <input type="date" id="fin" name="fin_date" min="<?php echo date('Y-m-d') ?>" />
-                    <small>Créneau d'une heure !</small>
+                    <label class="bk_font2">Créneau une heure max !</label>
                 <?php
                 }
                 ?>
@@ -213,7 +213,7 @@ if (!isset($_SESSION['login'])) {
                     ?>
                 </select>
                 <!-- /////////////// -->
-                <small class="oblig">Champ obligatoire</small>
+                <label class="bk_font2">Good luck my <br> brother !</label>
                 <!-- BOUTON RESERVER -->
                 <input type="submit" name="validresa" class="button" value="Réserver">
 

@@ -53,13 +53,13 @@ if (isset($_SESSION["login"])) {
             <p>Le <?php echo $jour ?> de <?php echo $heure_debut; ?> à <?php echo $heure_fin; ?></p>
             <hr>
             <section class="info_resa">
-                <p><u>Intitulé</u> :</p>
-                <?php echo $titre; ?>
+                <p><u>Match</u> :</p>
+                <p><?php echo $titre; ?></p>
             </section>
             <hr>
             <section class="info_resa">
-                <p><u>Description</u> :</p>
-                <?php echo $description; ?>
+                <p><u>Equipe</u> :</p>
+                <p><?php echo $description; ?></p>
             </section>
 
         </section>
