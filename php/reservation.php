@@ -1,13 +1,15 @@
 <?php
+include_once("./include/config.php");
 session_start();
+
 if (isset($_SESSION["login"])) {
     if (isset($_GET["evenement"]) && !empty($_GET["evenement"])) {
         $id = $_GET["evenement"];
 
-        $connexionbd = mysqli_connect("localhost", "root", "", "reservationsalles");
-        $requete = "SELECT * FROM reservations INNER JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateurs WHERE reservations.id = '$id'";
-        $query = mysqli_query($connexionbd, $requete);
-        $resa = mysqli_fetch_all($query, MYSQLI_ASSOC);
+        // $connexionbd = mysqli_connect("localhost", "root", "", "reservationsalles");
+        $requete = $bdd->prepare("SELECT * FROM reservations INNER JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE reservations.id = ? ");
+        $requete->execute([$id]);
+        $resa = $requete->fetchAll(PDO::FETCH_ASSOC);
 
         $titre = $resa[0]['titre'];
         $login = $resa[0]['login'];
@@ -41,12 +43,15 @@ if (isset($_SESSION["login"])) {
 
 <body>
     <header>
-        <?php include_once './include/header-include.php'; ?>
+        <nav>
+            <?php include_once './include/header-include.php'; ?>
+        </nav>
     </header>
     <main>
         <section id="reservation">
             <h1>Réserver par <u><?php echo $login; ?></u></h1>
             <p>Le <?php echo $jour ?> de <?php echo $heure_debut; ?> à <?php echo $heure_fin; ?></p>
+            <hr>
             <section class="info_resa">
                 <p><u>Intitulé</u> :</p>
                 <?php echo $titre; ?>
@@ -60,7 +65,6 @@ if (isset($_SESSION["login"])) {
         </section>
     </main>
 
-    <?php include 'include/footer.php'; ?>
 </body>
 
 </html>

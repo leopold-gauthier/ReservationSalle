@@ -74,6 +74,14 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
                                         <td class="resa"><a href="reservation.php?evenement=<?php echo $id; ?>">
                                                 <p><?php echo $titre; ?></p>
                                                 <p><?php echo $login; ?></p>
+                                                <?php
+                                                if (isset($_SESSION['login']) && $_SESSION['login'] == 'admin') { ?>
+                                                    <a href="./reservation_delete.php?id=<?php echo $id; ?>"><i class="fa-solid fa-xmark"></i></a>
+                                                <?php
+                                                } else {
+                                                    echo "";
+                                                }
+                                                ?>
                                             </a></td>
                                     <?php
                                         break;

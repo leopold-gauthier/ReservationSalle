@@ -19,7 +19,6 @@ if (!isset($_SESSION['login'])) {
         $requete_creneau->execute(array($debut));
         $requete_creneau = $requete_creneau->fetch(PDO::FETCH_ASSOC);
 
-        var_dump($requete_creneau);
         //check si le jour n'est pas week-end
         $semaine = explode("-", $_POST["debut_date"]);
         $jour = date("N", mktime(0, 0, 0, $semaine[1], $semaine[2], $semaine[0]));
@@ -44,7 +43,7 @@ if (!isset($_SESSION['login'])) {
                         {
                             $ajout = $bdd->prepare("INSERT INTO reservations (id_utilisateur,titre, description, debut, fin) VALUES (?, ?, ?, ?, ?)");
                             $ajout->execute([$id, $titre, $description, $debut, $fin]);
-                            $msg_valid = "réservation prise en compte";
+                            header("Location: ./planning.php");
                         } else {
                             $msg_error = "Pas de réservation le week-end";
                         }
