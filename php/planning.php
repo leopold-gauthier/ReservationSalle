@@ -110,6 +110,9 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
         </table>
     </main>
 
+
+    <footer><?php include_once("./include/footer.php"); ?></footer>
+
 </body>
 
 </html>

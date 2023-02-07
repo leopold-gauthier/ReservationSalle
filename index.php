@@ -52,6 +52,11 @@ require "./php/include/config.php"
             <p>This is the last news of the week !</p>
         </main>
     </div>
+
+
+    <footer><?php include_once("./include/footer.php"); ?></footer>
+
+
 </body>
 
 

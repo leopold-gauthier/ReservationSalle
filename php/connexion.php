@@ -56,6 +56,8 @@ require "./include/config.php";
         </form>
     </main>
 
+    <footer><?php include_once("./include/footer.php"); ?></footer>
+
 </body>
 
 </html>

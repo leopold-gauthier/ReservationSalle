@@ -65,6 +65,8 @@ if (isset($_SESSION["login"])) {
         </section>
     </main>
 
+    <footer><?php include_once("./include/footer.php"); ?></footer>
+
 </body>
 
 </html>
