@@ -76,22 +76,22 @@ if (!isset($_SESSION['login'])) {
         </nav>
     </header>
     <main>
-        <h1>Réserver une compétition:</h1>
+        <h1>Réserver une compétition</h1>
         <form action="reservation-form.php" method="POST" class="form_pir">
-            <label for="titre">Match:<span class="oblig">*</span> :</label>
+            <label for="titre">Match</label>
             <select id="titre" name="titre" required>
                 <option value="1 vs 1">1 vs 1</option>
                 <option value="2 vs 2">2 vs 2</option>
                 <option value="3 vs 3">3 vs 3</option>
                 <option value="4 vs 4">4 vs 4</option>
                 <option value="5 vs 5">5 vs 5</option>
-
             </select>
-            <label for="equipe">Equipe: <span class="oblig">*</span></label>
+            <label for="equipe">Equipe</label>
             <input type="text" id="description" name="description" required>
-            <label for="debut">Date et heure de début <span class="oblig">*</span> :</label>
+            <label for="debut">Date et heure de début</label>
 
             <!-- Date de Debut -->
+            <!-- ///////////// -->
             <?php
             if (isset($_GET["date_debut"])) {
                 $date_debut = $_GET["date_debut"];
@@ -122,8 +122,9 @@ if (!isset($_SESSION['login'])) {
             }
             ?>
 
+            <!-- HEURE DEBUT -->
+            <!-- /////////// -->
             <select id="debut" name="debut_heure" required>
-                <!-- HEURE DEBUT -->
                 <?php
                 if (isset($_GET["heure_debut"])) {
                     for ($heure_select = 8; $heure_select <= 19; $heure_select++) {
@@ -157,8 +158,10 @@ if (!isset($_SESSION['login'])) {
                 ?>
             </select>
 
-            <label for="fin">Date et heure de fin <span class="oblig">*</span> :</label>
             <!-- Date et Heure de fin -->
+            <!-- //////////////////// -->
+
+            <label for="fin">Date et heure de fin</label>
             <?php
             if (isset($_GET["date_debut"])) {
             ?>
@@ -172,6 +175,9 @@ if (!isset($_SESSION['login'])) {
             <?php
             }
             ?>
+
+            <!-- FIN HEURE -->
+            <!-- ///////// -->
             <select id="fin" name="fin_heure" required>
                 <?php
                 if (isset($_GET["heure_debut"])) {
@@ -205,15 +211,17 @@ if (!isset($_SESSION['login'])) {
                 }
                 ?>
             </select>
-            <small class="oblig">* Champ obligatoire</small>
-            <input type="submit" name="validresa" class="bouton" value="Réserver">
+            <!-- /////////////// -->
+            <small class="oblig">Champ obligatoire</small>
+            <!-- BOUTON RESERVER -->
+            <input type="submit" name="validresa" class="button" value="Réserver">
 
             <?php
             if (isset($msg_error)) {
-                echo "<span class='msg_'>" . $msg_error . "</span><br/>";
+                echo "<p>" . $msg_error . "</p><br/>";
             }
             if (isset($msg_valid)) {
-                echo "<span class='msg_'>" . $msg_valid . "</span><br/>";
+                echo "<p>" . $msg_valid . "</p><br/>";
             }
             ?>
         </form>
