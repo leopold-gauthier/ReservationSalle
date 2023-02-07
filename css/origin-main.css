@@ -13,19 +13,20 @@ nav{
     align-items: center;
 }
 nav a{
-    
-    font-size: xx-large;
-    font-family: 'Courier New', Courier, monospace;
-    text-decoration: none;
-    color: white;
+   
+}
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 h1 {
-    margin: 0%;
+    margin-top: 7%;
     background-color: black;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Dosis', sans-serif;
     text-align: center;
-    font-size: 5rem;
+    font-size: 3rem;
     color: white;
 }
 
@@ -34,6 +35,12 @@ p {
     font-family: 'Courier New', Courier, monospace;
     text-align: center;
     font-size: 2rem;
+    color: white;
+}
+a{
+    font-size: medium;
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none;
     color: white;
 }
 
@@ -45,13 +52,40 @@ video{
     object-position: fixed;
 }
 
+label{
+    font-size: 1.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
 
-#editelement{
+form{
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
+    align-items: center;
+}
+table, th, tr, td{
+    color: white;
+    border: solid 1px white;
+   
+}
+
+
+#editelement{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .editelement{
+
+}
+
+.button{
+padding: 10px 20px;
+background-color: white;
+color: black;
+
 
 }

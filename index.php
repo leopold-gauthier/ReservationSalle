@@ -53,10 +53,6 @@ require "./php/include/config.php"
         </main>
     </div>
 
-
-    <footer><?php include_once("./include/footer.php"); ?></footer>
-
-
 </body>
 
 
