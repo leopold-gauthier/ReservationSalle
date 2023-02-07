@@ -75,158 +75,159 @@ if (!isset($_SESSION['login'])) {
             <?php include './include/header-include.php'; ?>
         </nav>
     </header>
-    <main>
-        <h1>Réserver une compétition</h1>
-        <form action="reservation-form.php" method="POST" class="form_pir">
-            <label for="titre">Match</label>
-            <select id="titre" name="titre" required>
-                <option value="1 vs 1">1 vs 1</option>
-                <option value="2 vs 2">2 vs 2</option>
-                <option value="3 vs 3">3 vs 3</option>
-                <option value="4 vs 4">4 vs 4</option>
-                <option value="5 vs 5">5 vs 5</option>
-            </select>
-            <label for="equipe">Equipe</label>
-            <input type="text" id="description" name="description" required>
-            <label for="debut">Date et heure de début</label>
+    <div id="backgroundreservation-form">
+        <main>
+            <h1>Réserver une compétition</h1>
+            <form action="reservation-form.php" method="POST" class="form_pir">
+                <label for="titre">Match</label>
+                <select id="titre" name="titre" required>
+                    <option value="1 vs 1">1 vs 1</option>
+                    <option value="2 vs 2">2 vs 2</option>
+                    <option value="3 vs 3">3 vs 3</option>
+                    <option value="4 vs 4">4 vs 4</option>
+                    <option value="5 vs 5">5 vs 5</option>
+                </select>
+                <label for="equipe">Equipe</label>
+                <input type="text" id="description" name="description" required>
+                <label for="debut">Date et heure de début</label>
 
-            <!-- Date de Debut -->
-            <!-- ///////////// -->
-            <?php
-            if (isset($_GET["date_debut"])) {
-                $date_debut = $_GET["date_debut"];
-
-                if ($date_debut == 1) {
-                    $date_select = date('Y-m-d', strtotime('monday this week'));
-                }
-                if ($date_debut == 2) {
-                    $date_select = date('Y-m-d', strtotime('tuesday this week'));
-                }
-                if ($date_debut == 3) {
-                    $date_select = date('Y-m-d', strtotime('wednesday this week'));
-                }
-                if ($date_debut == 4) {
-                    $date_select = date('Y-m-d', strtotime('thursday this week'));
-                }
-                if ($date_debut == 5) {
-                    $date_select = date('Y-m-d', strtotime('friday this week'));
-                }
-
-            ?>
-                <input type="date" id="debut" name="debut_date" min="<?php echo date('Y-m-d') ?>" value="<?php echo $date_select; ?>" required>
-            <?php
-            } else {
-            ?>
-                <input type="date" id="debut" name="debut_date" min="<?php echo date('Y-m-d') ?>" />
-            <?php
-            }
-            ?>
-
-            <!-- HEURE DEBUT -->
-            <!-- /////////// -->
-            <select id="debut" name="debut_heure" required>
+                <!-- Date de Debut -->
+                <!-- ///////////// -->
                 <?php
-                if (isset($_GET["heure_debut"])) {
-                    for ($heure_select = 8; $heure_select <= 19; $heure_select++) {
-                        if ($heure_select < 10) {
+                if (isset($_GET["date_debut"])) {
+                    $date_debut = $_GET["date_debut"];
+
+                    if ($date_debut == 1) {
+                        $date_select = date('Y-m-d', strtotime('monday this week'));
+                    }
+                    if ($date_debut == 2) {
+                        $date_select = date('Y-m-d', strtotime('tuesday this week'));
+                    }
+                    if ($date_debut == 3) {
+                        $date_select = date('Y-m-d', strtotime('wednesday this week'));
+                    }
+                    if ($date_debut == 4) {
+                        $date_select = date('Y-m-d', strtotime('thursday this week'));
+                    }
+                    if ($date_debut == 5) {
+                        $date_select = date('Y-m-d', strtotime('friday this week'));
+                    }
+
                 ?>
-                            <option value="<?php echo "0" . $heure_select . ":00"; ?>" <?php if ($heure_select == $_GET["heure_debut"]) {
+                    <input type="date" id="debut" name="debut_date" min="<?php echo date('Y-m-d') ?>" value="<?php echo $date_select; ?>" required>
+                <?php
+                } else {
+                ?>
+                    <input type="date" id="debut" name="debut_date" min="<?php echo date('Y-m-d') ?>" />
+                <?php
+                }
+                ?>
+
+                <!-- HEURE DEBUT -->
+                <!-- /////////// -->
+                <select id="debut" name="debut_heure" required>
+                    <?php
+                    if (isset($_GET["heure_debut"])) {
+                        for ($heure_select = 8; $heure_select <= 19; $heure_select++) {
+                            if ($heure_select < 10) {
+                    ?>
+                                <option value="<?php echo "0" . $heure_select . ":00"; ?>" <?php if ($heure_select == $_GET["heure_debut"]) {
+                                                                                                echo "selected";
+                                                                                            } ?>><?php echo "0" . $heure_select . ":00"; ?></option>
+                            <?php
+                            } else {
+                            ?>
+                                <option value="<?php echo $heure_select . ":00"; ?>" <?php if ($heure_select == $_GET["heure_debut"]) {
                                                                                             echo "selected";
-                                                                                        } ?>><?php echo "0" . $heure_select . ":00"; ?></option>
-                        <?php
-                        } else {
-                        ?>
-                            <option value="<?php echo $heure_select . ":00"; ?>" <?php if ($heure_select == $_GET["heure_debut"]) {
-                                                                                        echo "selected";
-                                                                                    } ?>><?php echo $heure_select . ":00"; ?></option>
-                        <?php
+                                                                                        } ?>><?php echo $heure_select . ":00"; ?></option>
+                            <?php
+                            }
+                        }
+                    } else {
+                        for ($heure_select = 8; $heure_select <= 19; $heure_select++) {
+                            if ($heure_select < 10) {
+                            ?>
+                                <option value="<?php echo "0" . $heure_select . ":00"; ?>"><?php echo "0" . $heure_select . ":00"; ?></option>
+                            <?php
+                            } else {
+                            ?>
+                                <option value="<?php echo $heure_select . ":00"; ?>"><?php echo $heure_select . ":00"; ?></option>
+                    <?php
+                            }
                         }
                     }
-                } else {
-                    for ($heure_select = 8; $heure_select <= 19; $heure_select++) {
-                        if ($heure_select < 10) {
-                        ?>
-                            <option value="<?php echo "0" . $heure_select . ":00"; ?>"><?php echo "0" . $heure_select . ":00"; ?></option>
-                        <?php
-                        } else {
-                        ?>
-                            <option value="<?php echo $heure_select . ":00"; ?>"><?php echo $heure_select . ":00"; ?></option>
+                    ?>
+                </select>
+
+                <!-- Date et Heure de fin -->
+                <!-- //////////////////// -->
+
+                <label for="fin">Date et heure de fin</label>
                 <?php
-                        }
-                    }
+                if (isset($_GET["date_debut"])) {
+                ?>
+                    <input type="date" id="fin" name="fin_date" min="<?php echo date('Y-m-d') ?>" value="<?php echo $date_select; ?>" required>
+                    <small>Créneau d'une heure !</small>
+                <?php
+                } else {
+                ?>
+                    <input type="date" id="fin" name="fin_date" min="<?php echo date('Y-m-d') ?>" />
+                    <small>Créneau d'une heure !</small>
+                <?php
                 }
                 ?>
-            </select>
 
-            <!-- Date et Heure de fin -->
-            <!-- //////////////////// -->
-
-            <label for="fin">Date et heure de fin</label>
-            <?php
-            if (isset($_GET["date_debut"])) {
-            ?>
-                <input type="date" id="fin" name="fin_date" min="<?php echo date('Y-m-d') ?>" value="<?php echo $date_select; ?>" required>
-                <small>Créneau d'une heure !</small>
-            <?php
-            } else {
-            ?>
-                <input type="date" id="fin" name="fin_date" min="<?php echo date('Y-m-d') ?>" />
-                <small>Créneau d'une heure !</small>
-            <?php
-            }
-            ?>
-
-            <!-- FIN HEURE -->
-            <!-- ///////// -->
-            <select id="fin" name="fin_heure" required>
-                <?php
-                if (isset($_GET["heure_debut"])) {
-                    for ($heure_fin = 9; $heure_fin <= 20; $heure_fin++) {
-                        if ($heure_fin < 10) {
-                ?>
-                            <option value="<?php echo "0" . $heure_fin . ":00"; ?>" <?php if ($heure_fin == $_GET["heure_debut"] + 1) {
+                <!-- FIN HEURE -->
+                <!-- ///////// -->
+                <select id="fin" name="fin_heure" required>
+                    <?php
+                    if (isset($_GET["heure_debut"])) {
+                        for ($heure_fin = 9; $heure_fin <= 20; $heure_fin++) {
+                            if ($heure_fin < 10) {
+                    ?>
+                                <option value="<?php echo "0" . $heure_fin . ":00"; ?>" <?php if ($heure_fin == $_GET["heure_debut"] + 1) {
+                                                                                            echo "selected";
+                                                                                        } ?>><?php echo "0" . $heure_fin . ":00"; ?></option>
+                            <?php
+                            } else {
+                            ?>
+                                <option value="<?php echo $heure_fin . ":00"; ?>" <?php if ($heure_fin == $_GET["heure_debut"] + 1) {
                                                                                         echo "selected";
-                                                                                    } ?>><?php echo "0" . $heure_fin . ":00"; ?></option>
-                        <?php
-                        } else {
-                        ?>
-                            <option value="<?php echo $heure_fin . ":00"; ?>" <?php if ($heure_fin == $_GET["heure_debut"] + 1) {
-                                                                                    echo "selected";
-                                                                                } ?>><?php echo $heure_fin . ":00"; ?></option>
-                        <?php
+                                                                                    } ?>><?php echo $heure_fin . ":00"; ?></option>
+                            <?php
+                            }
+                        }
+                    } else {
+                        for ($heure_fin = 9; $heure_fin <= 20; $heure_fin++) {
+                            if ($heure_fin < 10) {
+                            ?>
+                                <option value="<?php echo "0" . $heure_fin . ":00"; ?>"><?php echo "0" . $heure_fin . ":00"; ?></option>
+                            <?php
+                            } else {
+                            ?>
+                                <option value="<?php echo $heure_fin . ":00"; ?>"><?php echo $heure_fin . ":00"; ?></option>
+                    <?php
+                            }
                         }
                     }
-                } else {
-                    for ($heure_fin = 9; $heure_fin <= 20; $heure_fin++) {
-                        if ($heure_fin < 10) {
-                        ?>
-                            <option value="<?php echo "0" . $heure_fin . ":00"; ?>"><?php echo "0" . $heure_fin . ":00"; ?></option>
-                        <?php
-                        } else {
-                        ?>
-                            <option value="<?php echo $heure_fin . ":00"; ?>"><?php echo $heure_fin . ":00"; ?></option>
+                    ?>
+                </select>
+                <!-- /////////////// -->
+                <small class="oblig">Champ obligatoire</small>
+                <!-- BOUTON RESERVER -->
+                <input type="submit" name="validresa" class="button" value="Réserver">
+
                 <?php
-                        }
-                    }
+                if (isset($msg_error)) {
+                    echo "<p>" . $msg_error . "</p><br/>";
+                }
+                if (isset($msg_valid)) {
+                    echo "<p>" . $msg_valid . "</p><br/>";
                 }
                 ?>
-            </select>
-            <!-- /////////////// -->
-            <small class="oblig">Champ obligatoire</small>
-            <!-- BOUTON RESERVER -->
-            <input type="submit" name="validresa" class="button" value="Réserver">
-
-            <?php
-            if (isset($msg_error)) {
-                echo "<p>" . $msg_error . "</p><br/>";
-            }
-            if (isset($msg_valid)) {
-                echo "<p>" . $msg_valid . "</p><br/>";
-            }
-            ?>
-        </form>
-    </main>
-
+            </form>
+        </main>
+    </div>
 
     <footer><?php include_once("./include/footer.php"); ?></footer>
 

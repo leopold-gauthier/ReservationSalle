@@ -58,5 +58,7 @@ require "./php/include/config.php"
 
 </html>
 <style>
-
+    nav {
+        padding: 5% 5% 0% 5%;
+    }
 </style>

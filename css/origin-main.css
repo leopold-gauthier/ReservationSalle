@@ -5,7 +5,7 @@ body,html{
 }
 
 nav{
-    padding-top: 5%;
+    padding: 5%;
     background-color: black;
     display: flex;
     flex-direction: row;
@@ -30,6 +30,14 @@ h1 {
     color: white;
 }
 h2 {
+    margin-top: 2%;
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: 3rem;
+    color: white;
+}
+h3 {
     margin-top: 2%;
     background-color: black;
     font-family: 'Courier New', Courier, monospace;
@@ -79,11 +87,7 @@ form{
     flex-direction: column;
     align-items: center;
 }
-table, th, tr, td{
-    color: white;
-    border: solid 1px white;
-   
-}
+
 
 
 #editelement{
@@ -99,9 +103,16 @@ table, th, tr, td{
 }
 
 .button{
+    margin-top: 7%;
 padding: 10px 20px;
 background-color: white;
 color: black;
 
 
+}
+
+#backgroundreservation-form{
+    background-image: url(../assets/img/bk_1.jpg);
+  background-size: cover;
+  background-attachment: fixed;
 }

@@ -52,7 +52,7 @@ require("./include/config.php");
                 }
             }
             ?>
-            <input type="submit" name="envoi" id="button" value="Sign Up">
+            <input type="submit" name="envoi" class="button" value="Sign Up">
         </form>
     </main>
 

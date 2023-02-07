@@ -79,7 +79,7 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
                                                     <a href="./reservation_delete.php?id=<?php echo $id; ?>"><i class="fa-solid fa-xmark"></i></a>
                                                 <?php
                                                 } else {
-                                                    echo "";
+                                                    echo "Regarder Match";
                                                 }
                                                 ?>
                                             </a></td>
