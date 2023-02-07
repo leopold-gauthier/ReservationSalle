@@ -1,7 +1,57 @@
+body,html{
+    margin: 0%;
+    padding: 0%;
+    background-color: black;
+}
+
 nav{
-    margin: 5%;
+    padding-top: 5%;
+    background-color: black;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+nav a{
+    
+    font-size: xx-large;
+    font-family: 'Courier New', Courier, monospace;
+    text-decoration: none;
+    color: white;
+}
+
+h1 {
+    margin: 0%;
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: 5rem;
+    color: white;
+}
+
+p {
+    background-color: black;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    font-size: 2rem;
+    color: white;
+}
+
+video{
+    width: 100%;
+    background-attachment: fixed;
+    background-size: cover;
+    object-fit: cover;
+    object-position: fixed;
+}
+
+
+#editelement{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+}
+
+.editelement{
+
 }

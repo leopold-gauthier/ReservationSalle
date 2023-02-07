@@ -36,23 +36,26 @@ require "./php/include/config.php"
             ?>
         </nav>
     </header>
-
-    <main>
-        <h1>Bienvenue<br>
-            <?php
-            if (isset($_SESSION['login'])) {
-                echo strtoupper($_SESSION['login']);
-            }
-            ?>
-        </h1>
-        <style>
-            h1 {
-                text-align: center;
-                font-size: 5rem;
-                margin: 5% 0 0;
-            }
-        </style>
-    </main>
+    <div id="video">
+        <main>
+            <video preload="auto" src="./assets/media/csgo-vid.mp4" autoplay loop muted>
+            </video>
+            <h1>
+                <?php
+                if (isset($_SESSION['login'])) {
+                    echo "Welcome back " . strtoupper($_SESSION['login']) . " !";
+                } else {
+                    echo "Welcome";
+                }
+                ?>
+            </h1>
+            <p>This is the last news of the week !</p>
+        </main>
+    </div>
 </body>
 
+
 </html>
+<style>
+
+</style>
