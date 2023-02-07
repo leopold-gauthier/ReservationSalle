@@ -220,7 +220,7 @@ if (!isset($_SESSION['login'])) {
     </main>
 
 
-    <footer><a href="https://github.com/Dylan-olivro"><i class="fa-brands fa-github"></i></a></footer>
+    <footer><?php include_once("./include/footer.php"); ?></footer>
 
 </body>
 

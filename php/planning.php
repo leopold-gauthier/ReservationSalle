@@ -111,7 +111,7 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
     </main>
 
 
-    <footer><a href="https://github.com/Dylan-olivro"><i class="fa-brands fa-github"></i></a></footer>
+    <footer><?php include_once("./include/footer.php"); ?></footer>
 
 </body>
 
