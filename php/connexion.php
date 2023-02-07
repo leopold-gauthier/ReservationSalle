@@ -48,7 +48,7 @@ require "./include/config.php";
                         echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVotre login ou mot de passe incorect.</p>";
                     }
                 } else {
-                    echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVeuillez compléter tous les champs.</p>";
+                    echo "";
                 }
 
                 ?>

@@ -93,7 +93,7 @@ form{
     padding: 5%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
 }
 
 /* Tableau */
@@ -125,6 +125,7 @@ td{
 
 /* ----- */
 #editelement{
+    text-align: center;
     margin-top: 5%;
     display: flex;
     flex-direction: column;
@@ -133,7 +134,8 @@ td{
 }
 
 .editelement{
-
+    text-align: center;
+    width: 100%;
 }
 
 .button{
