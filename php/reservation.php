@@ -65,6 +65,8 @@ if (isset($_SESSION["login"])) {
         </section>
     </main>
 
+    <footer><a href="https://github.com/Dylan-olivro"><i class="fa-brands fa-github"></i></a></footer>
+
 </body>
 
 </html>
