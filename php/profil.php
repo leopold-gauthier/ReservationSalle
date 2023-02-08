@@ -56,7 +56,7 @@ require "./include/config.php";
                 }
             }
             ?>
-            <input type="submit" name="envoi" id="button" value="Edit">
+            <input type="submit" name="envoi" class="button" value="Edit">
         </form>
 
     </main>

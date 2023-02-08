@@ -100,11 +100,24 @@ select{
     box-shadow: none;
     font-size: 1.2em;
 }
+
+input[type="date"]{
+    background-color: #ffffff;
+    padding: 10px;
+    font-family: "Roboto Mono",monospace;
+    color: #000000;
+    font-size: 18px;
+    border: none;
+    outline: none;
+}
+
+
 /* Tableau */
 table{
     margin: 3%;
     border-collapse: collapse;
     border: solid 1px white;
+    background-color: #0000006f;
 
 }
 th{
@@ -192,7 +205,7 @@ footer{
 }
 
 #backgroundplanning {
-    background-image: url(../assets/img/112228.jpg);
+    background-image: url(../assets/img/bk_2.jpg);
     background-size: cover;
     background-attachment: fixed;
 }
