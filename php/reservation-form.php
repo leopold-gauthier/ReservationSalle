@@ -78,7 +78,8 @@ if (!isset($_SESSION['login'])) {
     <div id="backgroundreservation-form">
         <main>
             <h1 class="bk_font">Prepare your match !</h1>
-            <form action="reservation-form.php" method="POST" class="form_pir">
+            <p class="bk_font3">Choice your date and your hours it's <br>maximum 1hours of match !<br><br> So select ur favorite day <br>and good luck my brother !</p>
+            <form action="reservation-form.php" method="POST">
                 <label class="bk_font2" for="titre">Match</label>
                 <select id="titre" name="titre" required>
                     <option value="1 vs 1">1 vs 1</option>
@@ -87,12 +88,13 @@ if (!isset($_SESSION['login'])) {
                     <option value="4 vs 4">4 vs 4</option>
                     <option value="5 vs 5">5 vs 5</option>
                 </select>
+                <br>
                 <label class="bk_font2" for="equipe">Equipe</label>
                 <input type="text" id="description" name="description" required>
-                <label class="bk_font2" for="debut">Date Début</label>
-
+                <br>
                 <!-- Date de Debut -->
                 <!-- ///////////// -->
+                <label class="bk_font2" for="debut">Date Début</label>
                 <?php
                 if (isset($_GET["date_debut"])) {
                     $date_debut = $_GET["date_debut"];
@@ -158,21 +160,18 @@ if (!isset($_SESSION['login'])) {
                     }
                     ?>
                 </select>
-
+                <br>
                 <!-- Date et Heure de fin -->
                 <!-- //////////////////// -->
-
                 <label class="bk_font2">Date Fin</label>
                 <?php
                 if (isset($_GET["date_debut"])) {
                 ?>
                     <input type="date" id="fin" name="fin_date" min="<?php echo date('Y-m-d') ?>" value="<?php echo $date_select; ?>" required>
-                    <label class="bk_font2">Créneau une heure max !</label>
                 <?php
                 } else {
                 ?>
                     <input type="date" id="fin" name="fin_date" min="<?php echo date('Y-m-d') ?>" />
-                    <label class="bk_font2">Créneau une heure max !</label>
                 <?php
                 }
                 ?>
@@ -213,7 +212,8 @@ if (!isset($_SESSION['login'])) {
                     ?>
                 </select>
                 <!-- /////////////// -->
-                <label class="bk_font2">Good luck my <br> brother !</label>
+                <br>
+                <label class="bk_font">Good luck my brother !</label>
                 <!-- BOUTON RESERVER -->
                 <input type="submit" name="validresa" class="button" value="Réserver">
 

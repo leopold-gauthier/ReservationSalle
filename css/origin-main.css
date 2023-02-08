@@ -89,13 +89,17 @@ label{
 }
 form{
     margin: 3%;
-    border: solid 3px rgb(0, 0, 0);
+    border: solid 6px rgb(0, 0, 0);
     padding: 5%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
 }
-
+select{
+    text-align: center;
+    box-shadow: none;
+    font-size: 1.2em;
+}
 /* Tableau */
 table{
     margin: 3%;
@@ -115,12 +119,6 @@ td{
 
     color: white;
 
-}
-.td_reserved{
-    background-image: url(../assets/img/bk_td_edited.png);
-    background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
 }
 
 /* ----- */
@@ -176,17 +174,26 @@ footer{
 }
 
 
+
+
+
+
+
+
+
+
+
 /* SPECIAL // IMPLEMENTATION */
 
 #backgroundreservation-form{
     background-image: url(../assets/img/bk_1.jpg);
-  background-size: 120%;
+  background-size: cover;
   background-attachment: fixed;
 }
 
 #backgroundplanning {
     background-image: url(../assets/img/112228.jpg);
-    background-size: 120%;
+    background-size: cover;
     background-attachment: fixed;
 }
 
@@ -199,10 +206,20 @@ footer{
     
 }
 .bk_font2{
+    padding: 10% 0%;
     background-image: url(../assets/img/bk_font2.png);
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
+    
+    
+}
+.bk_font3{
+    padding: 7% 10%;
+    background-image: url(../assets/img/bk_font3.png);
+    background-size: 105%;
+    background-repeat: no-repeat;
+    background-position: right;
     
     
 }
@@ -212,4 +229,11 @@ video{
     background-size: cover;
     object-fit: cover;
     object-position: fixed;
+}
+
+.td_reserved{
+    background-image: url(../assets/img/bk_td_edited.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
