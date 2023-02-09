@@ -5,7 +5,7 @@ session_start();
 if (isset($_GET["evenement"]) && !empty($_GET["evenement"])) {
     $id = $_GET["evenement"];
 
-    // $connexionbd = mysqli_connect("localhost", "root", "", "reservationsalles");
+    // $connexionbd en pdo
     $requete = $bdd->prepare("SELECT * FROM reservations INNER JOIN utilisateurs ON utilisateurs.id = reservations.id_utilisateur WHERE reservations.id = ? ");
     $requete->execute([$id]);
     $resa = $requete->fetchAll(PDO::FETCH_ASSOC);
