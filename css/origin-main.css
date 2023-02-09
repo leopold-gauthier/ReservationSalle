@@ -21,6 +21,7 @@ nav a{
     color: white;
 }
 
+
 /* ------------ */
 
 
@@ -151,9 +152,9 @@ td{
 
 .button{
     margin-top: 7%;
-padding: 10px 20px;
-background-color: white;
-color: black;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
 
 
 }
@@ -199,7 +200,7 @@ footer{
 /* SPECIAL // IMPLEMENTATION */
 
 #backgroundreservation-form{
-    background-image: url(../assets/img/bk_1.jpg);
+  background-image: url(../assets/img/bk_1.jpg);
   background-size: cover;
   background-attachment: fixed;
 }
@@ -249,4 +250,20 @@ video{
     background-size: 100%;
     background-repeat: no-repeat;
     background-position: center;
+}
+
+
+/* Hover Anchor */
+
+
+nav a:hover {
+    color: #E46161;
+    transition: 0.25s cubic-bezier(0.72,-0.01, 0.19, 0.92);
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #E46161;
+    transition: 0.25s cubic-bezier(0.72,-0.01, 0.19, 0.92);
+    text-decoration: underline;
 }
