@@ -27,7 +27,7 @@ require("./include/config.php");
             <input type="text" id="login" name="login" placeholder="Login" required autofocus autocomplete="off">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" placeholder="Password" required>
-            <label for="cpassword">Confirmation</label>
+            <label for="cpassword">Confirmation Password</label>
             <input type="password" id="cpassword" name="cpassword" placeholder="Confirmation" required>
             <?php
             if (isset($_POST['envoi'])) {
