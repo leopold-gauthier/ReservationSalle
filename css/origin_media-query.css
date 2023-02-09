@@ -1,0 +1,29 @@
+/* MEDIA QUERY POUR MOBILE */
+@media screen and (max-width: 376px){
+
+nav{
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 1.5rem;
+}
+p{
+    font-size: 1rem;
+}
+
+thead{
+    font-size: 0.8rem;
+}
+
+label{
+    font-size: 1rem;
+}
+input{
+    font-size: 1rem;
+}
+select{
+    font-size: 1rem;
+}
+}
