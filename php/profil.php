@@ -32,18 +32,18 @@ require "./include/config.php";
             <?php
             if (isset($_POST['envoi'])) {
                 $login = htmlspecialchars($_POST['login']);
-                $password = $_POST['password']; // md5'() pour crypet le mdp
+                $password = $_POST['password'];
                 $id = $_SESSION['users'][0]['id'];
 
                 $recupUser = $bdd->prepare("SELECT * FROM utilisateurs WHERE login = ? AND id != ?");
                 $recupUser->execute([$login, $id]);
-                $insertUser = $bdd->prepare("UPDATE utilisateurs SET login = ? , prenom = ? , nom = ? , password=  ? WHERE id = ?");
+                $insertUser = $bdd->prepare("UPDATE utilisateurs SET login = ?, password=  ? WHERE id = ?");
 
                 if (empty($login) || empty($password) || empty($_POST['cpassword'])) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVeuillez complétez tous les champs.</p>";
                 } elseif (!preg_match("#^[a-z0-9]+$#", $login)) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspLe login doit être renseigné en lettres minuscules sans accents, sans caractères spéciaux.</p>";
-                } elseif ($password != md5($_POST['cpassword'])) {
+                } elseif ($password != $_POST['cpassword']) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspLes deux mots de passe sont differents.</p>";
                 } elseif ($password != $_SESSION['users'][0]['password']) {
                     echo  "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspCe n'est pas le bon mot de passe</p>";
