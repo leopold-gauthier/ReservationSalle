@@ -82,14 +82,16 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
                                             <td class="td_reserved">
                                                 <a href="reservation.php?evenement=<?php echo $id; ?>">
                                                     <?php echo $titre; ?><br>
-                                                    <?php echo $desc; ?><br>
+                                                    <i class="fa-sharp fa-solid fa-person-rifle"></i>
+                                                    <?php //  echo $desc;
+                                                    ?><br>
                                                     <?php
                                                     if (isset($_SESSION['login']) && $_SESSION['login'] == 'admin') { ?>
                                                         <a onclick="confirmToSuppr()"><i class="fa-solid fa-xmark"></i></a>
 
                                                     <?php
                                                     } else {
-                                                        echo "View Match";
+                                                        // echo "";
                                                     }
                                                     ?>
                                                 </a>
@@ -103,12 +105,12 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
                                     }
                                     if ($case == null) {
                                         ?>
-                                        <td class="case"><a href="reservation-form.php?heure_debut=<?php echo $heure; ?>&amp;date_debut=<?php echo $jour; ?>">+</a></td>
+                                        <td class="case"><a href="reservation-form.php?heure_debut=<?php echo $heure; ?>&amp;date_debut=<?php echo $jour; ?>"><i class="fa-sharp fa-solid fa-pen"></i></a></td>
                                     <?php
                                     }
                                 } else {
                                     ?>
-                                    <td class="case"><a href="reservation-form.php?heure_debut=<?php echo $heure; ?>&amp;date_debut=<?php echo $jour; ?>">+</a></td>
+                                    <td class="case"><a href="reservation-form.php?heure_debut=<?php echo $heure; ?>&amp;date_debut=<?php echo $jour; ?>"><i class="fa-sharp fa-solid fa-pen"></i></a></td>
                             <?php
                                 }
                             }
