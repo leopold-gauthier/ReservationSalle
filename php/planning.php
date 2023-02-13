@@ -23,10 +23,15 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
 
     <div id="backgroundplanning">
         <main>
+
             <h1 class="bk_font">
                 Planning <?php echo $jour_semaine = date('Y', time()); ?>
             </h1>
-            <h2 class="bk_font">Semaine <?php echo $jour_semaine = date('W', time()); ?></h2>
+            <div id="nav_planning">
+                <!-- <a><i class="fa-solid fa-arrow-left"></i></a> -->
+                <h2 class="bk_font">Semaine <?php echo $jour_semaine = date('W', time()); ?></h2>
+                <!-- <a><i class="fa-solid fa-arrow-right"></i></a> -->
+            </div>
             <table>
                 <thead>
                     <tr>
@@ -80,7 +85,8 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
                                                     <?php echo $desc; ?><br>
                                                     <?php
                                                     if (isset($_SESSION['login']) && $_SESSION['login'] == 'admin') { ?>
-                                                        <a href="./reservation_delete.php?id=<?php echo $id; ?>"><i class="fa-solid fa-xmark"></i></a>
+                                                        <a onclick="confirmToSuppr()"><i class="fa-solid fa-xmark"></i></a>
+
                                                     <?php
                                                     } else {
                                                         echo "View Match";
@@ -97,12 +103,12 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
                                     }
                                     if ($case == null) {
                                         ?>
-                                        <td class="case"><a href="reservation-form.php?heure_debut=<?php echo $heure; ?>&amp;date_debut=<?php echo $jour; ?>">Créer votre Match</a></td>
+                                        <td class="case"><a href="reservation-form.php?heure_debut=<?php echo $heure; ?>&amp;date_debut=<?php echo $jour; ?>">+</a></td>
                                     <?php
                                     }
                                 } else {
                                     ?>
-                                    <td class="case"><a href="reservation-form.php?heure_debut=<?php echo $heure; ?>&amp;date_debut=<?php echo $jour; ?>">Créer votre Match</a></td>
+                                    <td class="case"><a href="reservation-form.php?heure_debut=<?php echo $heure; ?>&amp;date_debut=<?php echo $jour; ?>">+</a></td>
                             <?php
                                 }
                             }
@@ -128,3 +134,13 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
 
     }
 </STYLE>
+<script>
+    function confirmToSuppr() {
+        if (window.confirm("Do you really want to delete ?")) {
+            window.open("./reservation_delete.php?id=<?php echo $id; ?>");
+        } else {
+            window.open("../php/planning.php", "Cancel");
+
+        }
+    }
+</script>

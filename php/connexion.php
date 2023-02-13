@@ -43,14 +43,13 @@ require "./include/config.php";
                             $_SESSION['password'] = $password;
                             $_SESSION['users'] = $recupUser->fetchAll(PDO::FETCH_ASSOC);
                             header("Location: ../index.php");
+                        } else {
+                            echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVotre login ou mot de passe incorect.</p>";
                         }
                     } else {
                         echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVotre login ou mot de passe incorect.</p>";
                     }
-                } else {
-                    echo "";
                 }
-
                 ?>
                 <input type="submit" name="envoi" value="Log In" class="button">
             </form>

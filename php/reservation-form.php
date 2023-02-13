@@ -219,7 +219,7 @@ if (!isset($_SESSION['login'])) {
 
                 <?php
                 if (isset($msg_error)) {
-                    echo "<p>" . $msg_error . "</p><br/>";
+                    echo "<p class='bk_font3'>" . $msg_error . "</p><br/>";
                 }
                 if (isset($msg_valid)) {
                     echo "<p>" . $msg_valid . "</p><br/>";

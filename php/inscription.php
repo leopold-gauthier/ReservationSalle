@@ -33,16 +33,15 @@ require("./include/config.php");
             if (isset($_POST['envoi'])) {
                 $login = htmlspecialchars($_POST['login']);
                 $password = $_POST['password'];
-                $cpassword = $_POST['cpassword'];
 
                 $recupUser = $bdd->prepare("SELECT * FROM utilisateurs WHERE login = ?");
                 $recupUser->execute([$login]);
 
-                if (empty($login) || empty($password) || empty($cpassword)) {
+                if (empty($login) || empty($password) || empty($_POST['cpassword'])) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspVeuillez complétez tous les champs.</p>";
                 } elseif (!preg_match("#^[a-z0-9]+$#", $login)) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspLe login doit être renseigné en lettres minuscules sans accents, sans caractères spéciaux.</p>";
-                } elseif ($password != $cpassword) {
+                } elseif ($password != $_POST['cpassword']) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspLes deux mots de passe sont differents.</p>";
                 } elseif ($recupUser->rowCount() > 0) {
                     echo "<p><i class='fa-solid fa-triangle-exclamation'></i>&nbspCe login est déjà utilisé.</p>";
