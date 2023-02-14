@@ -6,6 +6,7 @@ $requete_resa = $bdd->prepare("SELECT * FROM utilisateurs INNER JOIN reservation
 $requete_resa->execute();
 $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,9 +29,7 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
                 Planning <?php echo $jour_semaine = date('Y', time()); ?>
             </h1>
             <div id="nav_planning">
-                <!-- <a><i class="fa-solid fa-arrow-left"></i></a> -->
                 <h2 class="bk_font">Semaine <?php echo $jour_semaine = date('W', time()); ?></h2>
-                <!-- <a><i class="fa-solid fa-arrow-right"></i></a> -->
             </div>
             <table>
                 <thead>
@@ -41,6 +40,7 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
                         <th class="jour">Mercredi <?php echo $jour_semaine = date('d/m', strtotime('wednesday this week')); ?></th>
                         <th class="jour">Jeudi <?php echo $jour_semaine = date('d/m', strtotime('thursday this week')); ?></th>
                         <th class="jour">Vendredi <?php echo $jour_semaine = date('d/m', strtotime('friday this week')); ?></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -88,7 +88,6 @@ $info_resa = $requete_resa->fetchALL(PDO::FETCH_ASSOC);
                                                     <?php
                                                     if (isset($_SESSION['login']) && $_SESSION['login'] == 'admin') { ?>
                                                         <a onclick="confirmToSuppr()"><i class="fa-solid fa-xmark"></i></a>
-
                                                     <?php
                                                     } else {
                                                         // echo "";
